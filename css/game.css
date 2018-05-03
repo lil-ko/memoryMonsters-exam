@@ -1,8 +1,12 @@
 .center {
     margin: auto;
     width: 33vw;
-    padding: 25px;
+    padding: 20px;
 	background-color: #e5efdc;
+}
+
+.buttons {
+	text-align: center;
 }
 
 .header {
@@ -33,6 +37,16 @@
 
 .flipped .back {
     display: none;
+}
+
+button {
+	font-size: 16px;
+	border-radius: 8px;
+	background-color: black; 
+	color: #e5efdc;
+	border: 2px solid black;
+	margin: 10px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .shakeImg {
