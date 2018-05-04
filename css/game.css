@@ -73,6 +73,11 @@ button {
 	display: none;
 }
 
+.newRecord{
+	color: black;
+	background-color: #e5efdc;
+}
+
 .shakeImg {
   animation: shake 0.5s;
   animation-iteration-count: infinite;

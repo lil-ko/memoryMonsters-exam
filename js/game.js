@@ -18,19 +18,22 @@ var isProcessing = false;
 var name = null;
 if (localStorage.getItem('bestTime') === null) {
 	localStorage.setItem('bestTime',0);
-	localStorage.setItem('bestUserName','Unknown... yet');
-	setScoreTable();
+	localStorage.setItem('bestUserName','Unknown... yet');	
 }
-					
-do{
-	name = prompt("What's your name?");
-	if (name !== null) {
-		localStorage.setItem('currUserName', name);
-		localStorage.setItem('currTime', 0);
-		console.log(name + " - stored");
-		setScoreTable();
-		}
-}while (!name);
+
+if 	(localStorage.getItem('currUserName') === null) {				
+	do{
+		name = prompt("What's your name?");
+		if (name !== null) {
+			localStorage.setItem('currUserName', name);
+			localStorage.setItem('currTime', 0);
+			console.log(name + " - stored");
+			setScoreTable();
+			}
+	}while (!name);
+}
+
+setScoreTable();
 
 // This function is called whenever the user click a card
 function cardClicked(elCard) {
@@ -79,9 +82,9 @@ function cardClicked(elCard) {
 					audioWin.play();
 					gameOnGoing = false;
 					endTime = new Date().getTime();
-					var currTime = endTime - startTime;
+					var currTime = (endTime - startTime)/1000;
 					localStorage.setItem('currTime',currTime);
-					console.log('currTime' + currTime);
+					console.log('currTime ' + currTime);
 					setScoreTable();
 					flippedCouplesCount = 0;
 					document.querySelector('.actionBtns').classList.remove('hidden');
@@ -91,6 +94,16 @@ function cardClicked(elCard) {
 						localStorage.setItem('bestTime',currTime);
 						localStorage.setItem('bestUserName',localStorage.getItem('currUserName'));
 						setScoreTable();
+						setTimeout(function () {
+							document.getElementById("table").rows[0].cells[0].classList.add('newRecord');
+							document.getElementById("table").rows[0].cells[1].classList.add('newRecord');
+							document.getElementById("table").rows[0].cells[2].classList.add('newRecord');
+							setTimeout(function() {	
+								document.getElementById("table").rows[0].cells[0].classList.remove('newRecord');
+								document.getElementById("table").rows[0].cells[1].classList.remove('newRecord');
+								document.getElementById("table").rows[0].cells[2].classList.remove('newRecord');
+							}, 1000);	
+						}, 100);
 					}
 					
 					// Shake the logo
@@ -126,10 +139,17 @@ function playAgain() {
 	var cards = document.getElementsByClassName("card");
 	var i;
 	for (i=0; i < cards.length; i++) {
-		cards[i].classList.remove('flipped');
-		//shuffle
+		cards[i].classList.remove('flipped');	
 	}
+	shuffle();
 	document.querySelector('.actionBtns').classList.add('hidden');
+}
+
+function shuffle(){
+	var board = document.querySelector('.board');
+	for (var i = board.children.length; i >= 0; i--) {
+		board.appendChild(board.children[Math.random() * i | 0]);
+		}
 }
 
 function resetScore() {
@@ -141,9 +161,9 @@ function resetScore() {
 }
 
 function setScoreTable() {
-		document.getElementById("table").rows[0].cells.namedItem("bestTime").innerHTML = localStorage.getItem('bestTime');
+		document.getElementById("table").rows[0].cells.namedItem("bestTime").innerHTML = localStorage.getItem('bestTime') + ' s';
 		document.getElementById("table").rows[0].cells.namedItem("bestUserName").innerHTML = localStorage.getItem('bestUserName');
-		document.getElementById("table").rows[1].cells.namedItem("currTime").innerHTML = localStorage.getItem('currTime');
+		document.getElementById("table").rows[1].cells.namedItem("currTime").innerHTML = localStorage.getItem('currTime') + ' s';
 		document.getElementById("table").rows[1].cells.namedItem("currUserName").innerHTML = localStorage.getItem('currUserName');
 
 }
