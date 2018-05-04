@@ -36,6 +36,8 @@ span:hover{
 }
 	
 ul {
+	margin:auto;
+	width:220px;
 	font-size: 1.2em;
 	color:#85aa64;
 	padding:0;

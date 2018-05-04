@@ -28,7 +28,6 @@
     width: 165px;    
     float: left;
     margin: 5px;
-
 }
 
 .card img {
@@ -39,6 +38,26 @@
     display: none;
 }
 
+tr, td {
+    padding: 10px;
+    text-align: left;
+	border: 2px solid black;
+	border-radius:8px;
+	background-color: black;
+	color:#85aa64;
+	font-size:1.1em;
+	table-layout: fixed;
+	width: 30%;
+}
+
+table {
+    border-collapse:separate;
+    border: 2px solid black;
+    border-radius:8px;
+    -moz-border-radius:6px;
+	table-layout: fixed;
+}
+
 button {
 	font-size: 16px;
 	border-radius: 8px;
@@ -46,7 +65,12 @@ button {
 	color: #e5efdc;
 	border: 2px solid black;
 	margin: 10px;
+	color:#85aa64;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.hidden {
+	display: none;
 }
 
 .shakeImg {

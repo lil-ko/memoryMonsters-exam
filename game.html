@@ -6,6 +6,7 @@
   <title>Lil Monsters</title>
   <link rel="shortcut icon" type="image/x-icon" href="img/fav.ico" />
   <link rel="stylesheet" href="css/game.css" />
+
 </head>
 
 <body class="center">
@@ -40,13 +41,31 @@
   </div>
   </div>
   
+<div class="scoreTable">
+<table id="table" style="width:100%">
+		<tr>
+			<td>Best time</td>
+			<td id="bestTime"></td> 
+			<td id="bestUserName"></td>
+		</tr>	
+		<tr>
+			<td>Current time</td>
+			<td id="currTime"></td> 
+			<td id="currUserName"></td>
+		</tr>		
+	</table>
+</div>  
+  
 <div class="buttons">
-  <button id="playBtn" type="button" onclick="playAgain()" >Play again</button>
-  <br/>
-  <button id="homeBtn" type="button" onclick="window.location='index.html';" >Home</button>
-    </div>
-	
-  <script src="js/game.js"></script>
-</body>
+	<div class="actionBtns hidden">
+		<button id="changePlayer" type="button" onclick="changePlayer()" >Change Player</button>
+		<button id="playBtn" type="button" onclick="playAgain()" >Play again</button>
+		<button id="resetScore" type="button" onclick="resetScore()" >Reset Score</button>
+	</div>
 
+	<button id="homeBtn" type="button" onclick="window.location='index.html';" >Home</button>
+</div>		
+
+</body>
+  <script src="js/game.js"></script>
 </html>
