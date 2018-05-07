@@ -26,7 +26,6 @@
 }
 	
 span {
-	color:red
     -webkit-transition: width 2s; 
     transition: width 2s;
 }
